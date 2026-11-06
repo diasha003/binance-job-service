@@ -73,7 +73,7 @@ public class TickersService {
             trend = "FLAT";
         }
 
-        String pattern = "yyyy-dd-mm";
+        String pattern = "yyyy-MM-dd";
         DateFormat df = new SimpleDateFormat(pattern);
 
         return new TrendResponse("BNBUSDT", df.format(fromDate), df.format(toDate), trend);
