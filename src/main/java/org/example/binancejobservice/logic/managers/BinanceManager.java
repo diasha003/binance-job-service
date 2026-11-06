@@ -34,7 +34,6 @@ public class BinanceManager {
     }
 
     @Scheduled(fixedDelayString = "${BINANCE_POLL_INTERVAL}")
-    @Transactional
     public void getTickersLatestPrices (){
 
         LOGGER.info("obtaining average price of ticker ");
