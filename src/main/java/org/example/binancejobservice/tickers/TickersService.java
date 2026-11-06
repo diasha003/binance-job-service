@@ -57,7 +57,14 @@ public class TickersService {
 
     public TrendResponse getTickerTrendByPeriod(Date fromDate, Date toDate){
 
+        String pattern = "yyyy-MM-dd";
+        DateFormat df = new SimpleDateFormat(pattern);
+
         List<Ticker> tickers = tickerRepository.findFirstAndLastByTimePeriod(fromDate.getTime(), toDate.getTime());
+
+        if (tickers.isEmpty()){
+            return new TrendResponse("BNBUSDT", df.format(fromDate), df.format(toDate), "No data");
+        }
 
         BigDecimal firstPrice = tickers.get(0).getPrice();
         BigDecimal lastPrice = tickers.get(tickers.size()-1).getPrice();
@@ -73,8 +80,6 @@ public class TickersService {
             trend = "FLAT";
         }
 
-        String pattern = "yyyy-MM-dd";
-        DateFormat df = new SimpleDateFormat(pattern);
 
         return new TrendResponse("BNBUSDT", df.format(fromDate), df.format(toDate), trend);
 
