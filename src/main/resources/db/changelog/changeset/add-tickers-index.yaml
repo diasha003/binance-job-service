@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-idx-tickers-close-time
+      author: developer
+      changes:
+        - createIndex:
+            tableName: tickers
+            indexName: idx_tickets_close_time
+            columns:
+              - column:
+                  name: close_time

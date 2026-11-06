@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-tickers-table
+      author: developer
+      changes:
+        - createTable:
+            tableName: tickers
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: mins
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: price
+                  type: decimal(19,8)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: close_time
+                  type: bigint
+                  constraints:
+                    nullable: false
