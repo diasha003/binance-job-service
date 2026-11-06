@@ -26,7 +26,7 @@ public interface TickerRepository extends JpaRepository<Ticker, Long> {
 
 
     @Query(
-            value = "SELECT * FROM tickers WHERE close_time BETWEEN :from AND :to",
+            value = "SELECT * FROM tickers WHERE close_time BETWEEN :from AND :to ORDER BY close_time",
             countQuery = "SELECT count(*) FROM tickers WHERE close_time BETWEEN :from AND :to",
             nativeQuery = true
     )
