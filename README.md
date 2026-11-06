@@ -88,5 +88,3 @@ Use these when you run the jar or the Docker image without Compose.
 ## Tests
 
 ./mvnw test -Dtest='!BinanceJobServiceApplicationTests'
-
-Unit tests run anywhere. Integration tests start PostgreSQL with Testcontainers and are skipped if Docker is not available.
