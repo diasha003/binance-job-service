@@ -59,8 +59,6 @@ Example response of /prices/latest:
 
 { "symbol": "BNBUSDT", "price": 612.34567890, "fetchedAt": "2023-11-14T22:13:20Z" }
 
-Missing or invalid parameters return 400. If there is no data for the period, the service currently returns 500.
-
 ## Environment variables
 
 ### Docker Compose (optional .env file)
