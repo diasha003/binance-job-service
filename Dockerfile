@@ -1,14 +1,10 @@
-FROM maven:3.9-eclipse-temurin-21 AS build
+FROM maven:3.10.0-openjdk-21 as builder
 WORKDIR /workspace
-COPY pom.xml .
-RUN --mount=type=cache,target=/root/.m2 mvn -B -q dependency:go-offline
-COPY src ./src
-RUN --mount=type=cache,target=/root/.m2 mvn -B -Dmaven.test.skip=true package
+COPY . /workspace/.
+RUN mvn -f /workspace/pom.xml clean package -Dmaven.test.skip=true
 
-FROM eclipse-temurin:21-jre
-RUN useradd --system --no-create-home app
-WORKDIR /app
-COPY --from=build /workspace/target/*.jar app.jar
-USER app
+FROM eclipse-temurin:21-jre-alpine
+WORKDIR /workspace
+COPY --from=builder /workspace/target/*.jar /workspace/*.jar
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "/workspace/*.jar"]
