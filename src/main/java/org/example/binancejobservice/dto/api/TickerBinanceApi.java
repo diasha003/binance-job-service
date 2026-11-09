@@ -27,8 +27,7 @@ public class TickerBinanceApi {
     }
 
 
-    public long getClose_time() {
+    public long getCloseTime() {
         return closeTime;
     }
-
 }

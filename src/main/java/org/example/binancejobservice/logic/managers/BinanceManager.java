@@ -63,7 +63,7 @@ public class BinanceManager {
         tickerRepository.save(
                 new Ticker(tickerApi.getMins(),
                         tickerApi.getPrice(),
-                        tickerApi.getClose_time())
+                        tickerApi.getCloseTime())
         );
 
     }

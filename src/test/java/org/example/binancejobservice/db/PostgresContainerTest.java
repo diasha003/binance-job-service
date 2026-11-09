@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
+import org.springframework.test.context.TestPropertySource;
+import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
-import org.testcontainers.postgresql.PostgreSQLContainer;
+
 
 import java.math.BigDecimal;
 
@@ -21,7 +23,7 @@ public class PostgresContainerTest {
 
     @Container
     private static PostgreSQLContainer
-            postgresContainer = new PostgreSQLContainer("postgres:latest");
+            postgresContainer = new PostgreSQLContainer<>("postgres:latest");
 
     @DynamicPropertySource
     static void registerProperties(DynamicPropertyRegistry registry) {
